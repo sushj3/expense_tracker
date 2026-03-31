@@ -1,8 +1,8 @@
+import 'package:expense_tracker/widgets/expenses.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/main.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Text('random')
+    home: Expenses()
   ));
 }
