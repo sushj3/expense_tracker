@@ -9,6 +9,7 @@ State<NewExpense> createState(){
 }
 class _NewExpenseState extends State<NewExpense>{
   final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
   @override
   Widget build(BuildContext context){
     return Padding(
@@ -23,16 +24,23 @@ class _NewExpenseState extends State<NewExpense>{
               label: Text("Title"),
             ), //InputDecoration
         ), //TextField
-        Row(children: [
-          
-        ],)
+       
+          TextField(
+            controller:_amountController,
+            maxLength: 10,
+            keyboardType: TextInputType.numbers,
+            decoration: InputDecoration(
+              prefixText: '\$',
+              label: Text('Amount'),
+            ),
+          )
         Row(children: [
           ElevatedButton(onPressed: (){
             print(_titleController.text);
+            print(_amountController.text);
           }, child: Text("Save Expense")) //ElevatedButton
         ],)
-
-      ] 
+       ] 
     ) //Column
     ); //Padding
   }
