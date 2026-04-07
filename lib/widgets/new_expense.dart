@@ -21,7 +21,7 @@ class _NewExpenseState extends State<NewExpense>{
   @override
   Widget build(BuildContext context){
     return Padding(
-      padding: EdgeInsets.all(16)
+      padding: EdgeInsets.all(16),
       child: Column(
       children:[
         TextField(
@@ -36,15 +36,15 @@ class _NewExpenseState extends State<NewExpense>{
           TextField(
             controller:_amountController,
             maxLength: 10,
-            keyboardType: TextInputType.numbers,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
               prefixText: '\$',
               label: Text('Amount'),
             ),
-          )
+          ),
         Row(children: [
           ElevatedButton(onPressed: (){
-          }, child: Text("Cancel")) 
+          }, child: Text("Cancel")), 
           ElevatedButton(onPressed: (){
             print(_titleController.text);
             print(_amountController.text);
