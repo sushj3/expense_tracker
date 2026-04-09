@@ -15,13 +15,22 @@ class Expenses extends StatefulWidget{
 }
 class _ExpensesState extends State<Expenses>{
   void _openAddExpenseOverlay(){
-    showModalBottomSheet(context: context,
-    builder: (ctx) => NewExpense(onAddExpense: (Expense expense) {  },));
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+    builder: (ctx) => NewExpense(
+      onAddExpense: _addExpense ));
   }
   void _addExpense(Expense expense) {
       setState(() {
         _registeredExpenses.add(expense);
         // Add the new expense to the list of expe
+      });
+  }
+  void _removeExpense(Expense expense) {
+      setState(() {
+        _registeredExpenses.remove(expense);
+        // Remove the expense from the list of expenses
       });
   }
   final List<Expense> _registeredExpenses = [
@@ -60,8 +69,12 @@ class _ExpensesState extends State<Expenses>{
       children: [
         Text('CHART GOES HERE'),
         Expanded(
-          child: ExpensesList(expenses: _registeredExpenses)),
+          child: ExpensesList( 
+          onRemoveExpense: _removeExpense,
+          expenses: _registeredExpenses)
+        )
       ],
+
     ),
     );
   }
