@@ -1,4 +1,5 @@
 import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/widgets/expenses_list/expense_item.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
@@ -90,13 +91,10 @@ class _ExpensesState extends State<Expenses>{
       ), //AppBar
     body: Column(
       children: [
-        Text('CHART GOES HERE'),
-        Expanded(
-          child: mainContent
-        ),
+        Chart(expenses: _registeredExpenses),
+        Expanded(child: mainContent),
       ],
-
-    ),
+ ),
     );
   }
 
